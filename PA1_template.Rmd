@@ -33,25 +33,14 @@ For this part of the assignment, you can ignore the missing values in the datase
 
 ```{r echo=TRUE}
 dtDay <- summarise(group_by(dt, date),
-                   totalSteps = sum(steps),
-                   meanSteps = mean(steps, na.rm = TRUE),
-                   medianSteps = median(steps, na.rm = TRUE))
+                   totalSteps = sum(steps, na.rm = TRUE))
 
 hist(dtDay$totalSteps, 
      xlab = "Steps",
      main = "Histogram of the total number of steps taken each day")
 
-par(mfrow=c(1,2))
-with(dtDay, { 
-    plot(meanSteps ~ date,
-        type = "l",
-        xlab = "Date",
-        ylab = "Mean of Steps")
-    plot(medianSteps ~ date,
-        type = "l",  
-        xlab = "Date",
-        ylab = "Median of Steps")
-})
+mean(dtDay$totalSteps)
+median(dtDay$totalSteps)
 ```
 
 ## What is the average daily activity pattern?
@@ -97,27 +86,17 @@ dtImputed <- rbind(filter(dt,!is.na(steps)), dt2)
 dtImputed <- arrange(dtImputed, date, interval)
 
 dtImputedDay <- summarise(group_by(dtImputed, date),
-                   totalSteps = sum(steps),
-                   meanSteps = mean(steps, na.rm = TRUE),
-                   medianSteps = median(steps, na.rm = TRUE))
+                   totalSteps = sum(steps))
+
 hist(dtImputedDay$totalSteps, 
      xlab = "Steps",
      main = "Histogram of the total number of steps taken each day after imputing")
-par(mfrow=c(1,2))
-with(dtImputedDay, { 
-    plot(meanSteps ~ date,
-        type = "l",
-        xlab = "Date",
-        ylab = "Mean of Steps")
-    plot(medianSteps ~ date,
-        type = "l",  
-        xlab = "Date",
-        ylab = "Median of Steps")
-})
 
+mean(dtImputedDay$totalSteps)
+median(dtImputedDay$totalSteps)
 ```
 
-### Observation: There is slight variation in the mean and median steps per day after imputing the missing values. Total daily number of steps got increased after imputing the missing values.
+### Observation: Total daily number of steps and its mean and median got increased after imputing the missing values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

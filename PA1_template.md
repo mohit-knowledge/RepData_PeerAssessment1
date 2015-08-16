@@ -51,9 +51,7 @@ For this part of the assignment, you can ignore the missing values in the datase
 
 ```r
 dtDay <- summarise(group_by(dt, date),
-                   totalSteps = sum(steps),
-                   meanSteps = mean(steps, na.rm = TRUE),
-                   medianSteps = median(steps, na.rm = TRUE))
+                   totalSteps = sum(steps, na.rm = TRUE))
 
 hist(dtDay$totalSteps, 
      xlab = "Steps",
@@ -63,20 +61,20 @@ hist(dtDay$totalSteps,
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
 ```r
-par(mfrow=c(1,2))
-with(dtDay, { 
-    plot(meanSteps ~ date,
-        type = "l",
-        xlab = "Date",
-        ylab = "Mean of Steps")
-    plot(medianSteps ~ date,
-        type = "l",  
-        xlab = "Date",
-        ylab = "Median of Steps")
-})
+mean(dtDay$totalSteps)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-2.png) 
+```
+## [1] 9354.23
+```
+
+```r
+median(dtDay$totalSteps)
+```
+
+```
+## [1] 10395
+```
 
 ## What is the average daily activity pattern?
 
@@ -140,9 +138,8 @@ dtImputed <- rbind(filter(dt,!is.na(steps)), dt2)
 dtImputed <- arrange(dtImputed, date, interval)
 
 dtImputedDay <- summarise(group_by(dtImputed, date),
-                   totalSteps = sum(steps),
-                   meanSteps = mean(steps, na.rm = TRUE),
-                   medianSteps = median(steps, na.rm = TRUE))
+                   totalSteps = sum(steps))
+
 hist(dtImputedDay$totalSteps, 
      xlab = "Steps",
      main = "Histogram of the total number of steps taken each day after imputing")
@@ -151,22 +148,22 @@ hist(dtImputedDay$totalSteps,
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 ```r
-par(mfrow=c(1,2))
-with(dtImputedDay, { 
-    plot(meanSteps ~ date,
-        type = "l",
-        xlab = "Date",
-        ylab = "Mean of Steps")
-    plot(medianSteps ~ date,
-        type = "l",  
-        xlab = "Date",
-        ylab = "Median of Steps")
-})
+mean(dtImputedDay$totalSteps)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-2.png) 
+```
+## [1] 10766.19
+```
 
-### Observation: There is slight variation in the mean and median steps per day after imputing the missing values. Total daily number of steps got increased after imputing the missing values.
+```r
+median(dtImputedDay$totalSteps)
+```
+
+```
+## [1] 10766.19
+```
+
+### Observation: Total daily number of steps and its mean and median got increased after imputing the missing values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
