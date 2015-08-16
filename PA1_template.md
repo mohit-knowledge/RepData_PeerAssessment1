@@ -64,7 +64,7 @@ hist(dtDay$totalSteps,
      main="Histogram of the total number of steps taken each day")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -83,7 +83,7 @@ with(dtDay, {
 })
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 ## What is the average daily activity pattern?
 
@@ -102,7 +102,7 @@ plot(meanSteps ~ interval,
 })
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -163,7 +163,7 @@ hist(dtImputedDay$totalSteps,
      main="Histogram of the total number of steps taken each day after imputing")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
 
 ```r
 par(mfrow=c(1,2))
@@ -179,7 +179,7 @@ with(dtImputedDay, {
 })
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-2.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-2.png) 
 
 ### Observation: There is slight variation in the mean and median steps per day after imputing the missing values. Total daily number of steps got increased after imputing the missing values.
 
@@ -211,4 +211,4 @@ xyplot(meanSteps ~ interval | day,
        col = "blue")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
