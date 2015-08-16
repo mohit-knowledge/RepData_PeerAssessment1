@@ -38,8 +38,8 @@ dtDay <- summarise(group_by(dt, date),
                    medianSteps = median(steps, na.rm = TRUE))
 
 hist(dtDay$totalSteps, 
-     xlab="Steps",
-     main="Histogram of the total number of steps taken each day")
+     xlab = "Steps",
+     main = "Histogram of the total number of steps taken each day")
 
 par(mfrow=c(1,2))
 with(dtDay, { 
@@ -101,8 +101,8 @@ dtImputedDay <- summarise(group_by(dtImputed, date),
                    meanSteps = mean(steps, na.rm = TRUE),
                    medianSteps = median(steps, na.rm = TRUE))
 hist(dtImputedDay$totalSteps, 
-     xlab="Steps",
-     main="Histogram of the total number of steps taken each day after imputing")
+     xlab = "Steps",
+     main = "Histogram of the total number of steps taken each day after imputing")
 par(mfrow=c(1,2))
 with(dtImputedDay, { 
     plot(meanSteps ~ date,
